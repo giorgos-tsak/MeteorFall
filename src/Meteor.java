@@ -6,13 +6,16 @@ import javax.swing.ImageIcon;
 public class Meteor extends GameObject {
 	
 	private static ArrayList<Meteor> meteors = new ArrayList<>();
-	private Player player = new Player();
+	private static Player player = new Player();
 	private int damage;
 	private int health;
+	private int experienceValue;
 	private int scoreValue;
 	private static double spawnTime;
 	private Random random = new Random();
 	private int maxSpeed=30;
+	private int maxExperienceValue=35;
+	private int maxScoreValue=100;
 	
 	
 	
@@ -22,17 +25,31 @@ public class Meteor extends GameObject {
 		
 		width = 50;
 		height = 50;
-		speed = 5;
 		
-		speed = speed+player.getScore()/100;
+		speed = 5;		
+		speed += player.getScore()/100;
 		if(speed>=maxSpeed)
 		{
 			speed = maxSpeed;
 		}
 		
+		experienceValue=10;
+		experienceValue+= player.getScore()/50;
+		
+		if(experienceValue>=maxExperienceValue)
+		{
+			experienceValue = maxExperienceValue;
+		}
+		
+		scoreValue = 5;
+		scoreValue += player.getScore()/100;
+		if(scoreValue>=maxScoreValue)
+		{
+			scoreValue=maxScoreValue;
+		}
+		
 		damage = 15;
 		health = 100;
-		scoreValue = 10;
 		spawnTime = 0.5;
 		x = random.nextInt(GamePanel.Width/width)*width;
 		
@@ -97,8 +114,8 @@ public class Meteor extends GameObject {
 	
 	
 	
-	public int getScoreValue() {
-		return scoreValue;
+	public int getExperienceValue() {
+		return experienceValue;
 	}
 	public ArrayList<Meteor> getMeteors() {
 		return meteors;
@@ -115,5 +132,7 @@ public class Meteor extends GameObject {
 	public void setPlayer(Player player) {
 		this.player = player;
 	}
-		
+	public int getScoreValue() {
+		return scoreValue;
+	}
 }

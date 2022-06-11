@@ -17,11 +17,13 @@ public class Player extends GameObject {
 
 	
 	private int levelPoints;
+	private int experiencePoints;
 	private int health;
 	private int damage;
 	private double attackSpeed;
 	private int baseHealth = 100;
 	private int score;
+	private int upgradePoints;
 	private int maxLvL;
 	private double immunityDuration;
 	private boolean up=false,down=false,left=false,right=false,shoot=false;
@@ -30,9 +32,9 @@ public class Player extends GameObject {
 	private ArrayList<Meteor> meteors = new ArrayList<>();
 	private Account account = new Account();
 	private MyKeyListener myKeyListener = new MyKeyListener();
-	private JProgressBar healthBar = new JProgressBar();
 	private ArrayList<ArrayList<Bullet>> bullets = new ArrayList<>();
-	
+	private JProgressBar healthBar = new JProgressBar();
+	private JProgressBar experienceBar = new JProgressBar();
 	
 	Player()
 	{
@@ -46,15 +48,22 @@ public class Player extends GameObject {
 		attackSpeed=0.3;
 		width=100;
 		height=100;
-		levelPoints=0;
+		levelPoints=1;
 		speed=10.5;
 		immunityDuration=1;
 		maxLvL = 30;
+		experiencePoints = 0;
+		upgradePoints=1;
 		healthBar.setValue(health);
 		healthBar.setForeground(Color.green);
 		healthBar.setBackground(Color.black);
 		healthBar.setStringPainted(true);
 		healthBar.setString(Integer.toString(health));
+		experienceBar.setMaximum(levelPoints*1);
+		experienceBar.setForeground(new Color(0,188,255));
+		experienceBar.setBackground(Color.black);
+		experienceBar.setString(Integer.toString(levelPoints));
+		experienceBar.setStringPainted(true);
 		
 		
 	}
@@ -92,12 +101,14 @@ public class Player extends GameObject {
 		
 	}
 	
-	
 	public void update() {
+	
+		
 		move();
 		shoot();
 		increaseScore();
 		isFrozen();
+		lvlUp();
 		if(health<0)
 		{
 			health = 0;
@@ -113,13 +124,33 @@ public class Player extends GameObject {
 		healthBar.setValue(health);
 		healthBar.setString(Integer.toString(health));
 		healthBar.setBounds(this.getCenter()-50,this.y-20,100,15);
+		
+		experienceBar.setString(Integer.toString(levelPoints));
+		experienceBar.setValue(experiencePoints);
+		
+		experienceBar.setBounds(this.getCenter()-50,this.y-5,100,10);
 		for (Meteor meteor : meteors) {
 			if(meteor.getHealth()<=0)
 			{
-				score+=meteor.getScoreValue();
+				experiencePoints+=meteor.getExperienceValue();
+				score+=meteor.getScoreValue();			
 			}
 		}
 	
+		
+	}
+	
+	public void lvlUp() {
+		if(experiencePoints>=levelPoints*1 && levelPoints<maxLvL)
+		{
+			levelPoints++;
+			upgradePoints++;
+			if(levelPoints!=30)
+			{
+				experiencePoints=0;				
+			}
+			experienceBar.setMaximum(levelPoints*1);
+		}
 		
 	}
 	
@@ -292,7 +323,21 @@ public class Player extends GameObject {
 	public void setBaseHealth(int baseHealth) {
 		this.baseHealth = baseHealth;
 	}
-	
+	public JProgressBar getExperienceBar() {
+		return experienceBar;
+	}
+	public int getExperiencePoints() {
+		return experiencePoints;
+	}
+	public void setExperiencePoints(int experiencePoints) {
+		this.experiencePoints = experiencePoints;
+	}
+	public int getUpgradePoints() {
+		return upgradePoints;
+	}
+	public void setUpgradePoints(int upgradePoints) {
+		this.upgradePoints = upgradePoints;
+	}
 	
 	class MyKeyListener implements KeyListener{
 

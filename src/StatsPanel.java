@@ -69,36 +69,38 @@ public class StatsPanel extends JPanel implements ActionListener{
 	public void paint(Graphics g) {
 		super.paint(g);
 		g.drawImage(player.getImage(),10,100,200,200,null);
+		experiencePointsLabel.setText("Experience points: "+player.getUpgradePoints());
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getSource().equals(healthButton))
+		if(player.getUpgradePoints()!=0)
 		{
+			if(e.getSource().equals(healthButton) && health!=10)
+			{
+				increaseHealth();
+				player.setUpgradePoints(player.getUpgradePoints()-1);
+			}
+			if(e.getSource().equals(damageButton) && damage!=10)
+			{
+				increaseDamage();
+				player.setUpgradePoints(player.getUpgradePoints()-1);
+			}
+			if(e.getSource().equals(attackSpeedButton) && attackSpeed!=10)
+			{
+				increaseAttackSpeed();
+				player.setUpgradePoints(player.getUpgradePoints()-1);
+			}
 			
-			increaseHealth();
-			System.out.println(health);
 		}
-		if(e.getSource().equals(damageButton))
-		{
-			
-			increaseDamage();
-			System.out.println(damage);
-		}
-		if(e.getSource().equals(attackSpeedButton))
-		{
-			increaseAttackSpeed();
-			System.out.println(attackSpeed);
-		}
-		
 	}
 	
 	public void increaseDamage() {
-		if(damage!=10){	
+		
 			damage++;
 			damageLabel.setText("Damage: "+damage);
 			player.setDamage(player.getDamage()+damage);
-		}
+		
 		if(damage==10)
 		{
 			damageLabel.setText("Damage: MAX");
@@ -106,24 +108,24 @@ public class StatsPanel extends JPanel implements ActionListener{
 	}
 	
 	public void increaseHealth() {
-		if(health!=10){
+		
 			health++;
 			healthLabel.setText("Health: "+health);
 			player.setBaseHealth(player.getBaseHealth()+10);
 			player.getHealthBar().setMaximum(player.getBaseHealth());
-		}
+		
 		if(health==10)
 		{
 			healthLabel.setText("Health: MAX");
 		}
 	}
 	public void increaseAttackSpeed() {
-		if(attackSpeed!=10)
-		{
+		
+		
 			attackSpeed++;
 			attackSpeedLabel.setText("Atc. Speed: "+attackSpeed);
 			player.setAttackSpeed(player.getAttackSpeed()-0.02);
-		}
+		
 		if(attackSpeed==10)
 		{
 			attackSpeedLabel.setText("Atc. Speed: MAX");

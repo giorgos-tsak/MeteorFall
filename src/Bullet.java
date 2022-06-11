@@ -44,7 +44,7 @@ public class Bullet extends GameObject {
 		{	
 			bulletTime = System.currentTimeMillis();
 			
-			for (int i = 0; i < player.getLevelPoints()%3+1; i++) {
+			for (int i = 0; i < (player.getLevelPoints()/15)+1; i++) {
 				Bullet bullet = new Bullet(player);
 				bullet.width = bullet.width+player.getLevelPoints();
 				bullet.damage = bullet.damage+player.getLevelPoints()/3*5;

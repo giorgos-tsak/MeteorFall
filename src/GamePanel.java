@@ -50,6 +50,7 @@ public class GamePanel extends JPanel implements ActionListener{
 		this.setLayout(null);
 		this.setBackground(Color.black);
 		this.add(player.getHealthBar());
+		this.add(player.getExperienceBar());
 		this.add(scoreJLabel);
 		this.add(pauseButton);
 		this.add(bestScoreLabel);

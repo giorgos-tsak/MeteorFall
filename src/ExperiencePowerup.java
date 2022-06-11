@@ -2,8 +2,11 @@ import javax.swing.ImageIcon;
 
 public class ExperiencePowerup extends Powerup{
 	
+	private int experienceValue;
+	
 	ExperiencePowerup()
 	{
+		experienceValue = 50;
 		image = new ImageIcon("res\\experience.png").getImage();
 	}
 	
@@ -11,9 +14,10 @@ public class ExperiencePowerup extends Powerup{
 	@Override
 	public void applyEffect(Player player) {
 
-		if(this.collides(player) && player.getLevelPoints()<player.getMaxLvL()-1)
+		if(this.collides(player) && player.getLevelPoints()<player.getMaxLvL())
 		{
-			player.setLevelPoints(player.getLevelPoints()+1);
+			
+			player.setExperiencePoints(player.getExperiencePoints()+experienceValue);
 		}
 		
 	}
