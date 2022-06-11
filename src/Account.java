@@ -8,7 +8,6 @@ public class Account implements Serializable,Comparable<Account>{
 	private int bestScore;
 	
 	
-	
 	Account()
 	{
 		
