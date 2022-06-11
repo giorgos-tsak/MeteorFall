@@ -18,7 +18,7 @@ public class StatsPanel extends JPanel implements ActionListener{
 	private JLabel healthLabel = new JLabel("Health: 0");
 	private JLabel damageLabel = new JLabel("Damage: 0");
 	private JLabel attackSpeedLabel = new JLabel("Atc. Speed: 0");
-	private JLabel experiencePointsLabel = new JLabel("Experience points  0");
+	private JLabel experiencePointsLabel = new JLabel("Experience points: 0");
 	private JLabel imageJLabel = new JLabel();
 	private Player player = new Player();
 	private int damage;
@@ -33,17 +33,17 @@ public class StatsPanel extends JPanel implements ActionListener{
 		
 		healthButton.setBounds(Width/2+100, 105, 50, 30);
 		healthButton.addActionListener(this);
-		healthLabel.setBounds(healthButton.getX()-120,100,180,40);
+		healthLabel.setBounds(healthButton.getX()-145,100,180,40);
 		healthLabel.setFont(new Font(null,Font.PLAIN,25));
 		
 		damageButton.setBounds(Width/2+100, 175, 50, 30);
 		damageButton.addActionListener(this);
-		damageLabel.setBounds(damageButton.getX()-140,170,180,40);
+		damageLabel.setBounds(damageButton.getX()-165,170,180,40);
 		damageLabel.setFont(new Font(null,Font.PLAIN,25));
 		
 		attackSpeedButton.setBounds(Width/2+100, 245, 50, 30);
 		attackSpeedButton.addActionListener(this);
-		attackSpeedLabel.setBounds(attackSpeedButton.getX()-170,240,230,40);
+		attackSpeedLabel.setBounds(attackSpeedButton.getX()-195,240,230,40);
 		attackSpeedLabel.setFont(new Font(null,Font.PLAIN,25));
 		
 		experiencePointsLabel.setBounds(Width/2-145,350,280,40);
