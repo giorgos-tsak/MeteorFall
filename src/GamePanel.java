@@ -2,10 +2,13 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -22,15 +25,13 @@ public class GamePanel extends JPanel implements ActionListener{
 	private JButton pauseButton = new JButton("Pause");
 	private JButton restartButton = new JButton("Restart");
 	private OptionsPanel optionsPanel;
-	
+	private Image backgroundImage =new ImageIcon("res\\background.png").getImage();
 	GamePanel(Player player)
 	{
 		this.player = player;
 
-
 		pauseButton.setBounds(500,0,100,20);
 		pauseButton.setFocusable(false);
-		
 		
 		restartButton.setBounds(500,20,100,20);
 		restartButton.setFocusable(false);
@@ -44,9 +45,7 @@ public class GamePanel extends JPanel implements ActionListener{
 		bestScoreLabel.setForeground(Color.green);
 		bestScoreLabel.setFont(new Font(null,Font.BOLD,20));
 		bestScoreLabel.setBounds(0,50,150,20);
-		
-		
-		
+		 
 		this.setFocusable(true);
 		this.addKeyListener(player.getMyKeyListener());
 		this.setPreferredSize(new Dimension(Width,Height));
@@ -58,6 +57,7 @@ public class GamePanel extends JPanel implements ActionListener{
 		this.add(pauseButton);
 		this.add(restartButton);
 		this.add(bestScoreLabel);
+		
 	}
 	boolean pause = false;
 	@Override
@@ -101,6 +101,7 @@ public class GamePanel extends JPanel implements ActionListener{
 	public void paintComponent(Graphics g) {
 		
 		super.paintComponent(g);
+		g.drawImage(backgroundImage, 0, 0, GamePanel.Width, GamePanel.Height, null);
 		player.paint(g);
 		for (ArrayList<Bullet> arrayList: player.getBullets()) {
 			for (Bullet bullet : arrayList) {
@@ -113,6 +114,7 @@ public class GamePanel extends JPanel implements ActionListener{
 		for (Powerup powerup : powerups) {
 			powerup.paint(g);
 		}
+		
 	}
 		
 	
@@ -123,7 +125,7 @@ public class GamePanel extends JPanel implements ActionListener{
 	class GameThread extends Thread
 	{
 		public void run() {
-			while(!pause)
+			while(!pause && player.isAlive())
 			{
 				
 				
