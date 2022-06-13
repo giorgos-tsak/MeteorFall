@@ -34,20 +34,19 @@ public class Powerup extends GameObject{
 
 			powerupTime = System.currentTimeMillis();
 			Random randomPowerup = new  Random();
-			int x = randomPowerup.nextInt(3);
-			x=2;
+			int x = randomPowerup.nextInt(100);
 			Powerup powerup = null;
-			if(x==0)
+			if(x>=0 && x<=100)
 			{
-				powerup = new HealPowerup();
+				powerup = new ExperiencePowerup();
 			}
-			if(x==1)
+			if(x>=110 && x<=100)
 			{
 				powerup = new PiercePowerup();
 			}
-			if(x==2)
+			if(x>=1110 && x<30)
 			{
-				powerup = new ExperiencePowerup();
+				powerup = new HealPowerup();
 			}
 			return powerup;
 		}

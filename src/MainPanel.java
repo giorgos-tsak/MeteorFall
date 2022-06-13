@@ -34,6 +34,7 @@ public class MainPanel extends JPanel implements ActionListener{
 		optionsPanel.getPlayButton().addActionListener(this);
 		optionsPanel.getLeaderBoardButton().addActionListener(this);
 		gamePanel.getPauseButton().addActionListener(this);
+		gamePanel.getRestartButton().addActionListener(this);
 		statsPanel.getBackButton().addActionListener(this);
 		leaderBoardPanel.getBackButton().addActionListener(this);
 		

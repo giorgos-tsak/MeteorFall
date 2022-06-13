@@ -60,5 +60,10 @@ public abstract class GameObject {
 	public int getCenter() {
 		return this.x+this.width/2;
 	}
-	
+	public void setX(int x) {
+		this.x = x;
+	}
+	public void setY(int y) {
+		this.y = y;
+	}
 }

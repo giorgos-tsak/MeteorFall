@@ -10,17 +10,17 @@ public class PiercePowerup extends Powerup{
 	}
 	
 	
-	private static long pierceTime;
+	private static long pierceTime=System.currentTimeMillis();
 	@Override
 	public void applyEffect(Player player) {
 		long currentTime = System.currentTimeMillis();
 		if(this.collides(player))
 		{
-			
 			pierceTime = System.currentTimeMillis();
 			player.setPenetration(true);
 		}
 		double elapsedTime = (currentTime-pierceTime)/1000.0;
+		
 		if(elapsedTime>=pierceDuration)
 		{
 			player.setPenetration(false);

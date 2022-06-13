@@ -18,7 +18,6 @@ public class Meteor extends GameObject {
 	private int maxScoreValue=100;
 	
 	
-	
 	Meteor()
 	{
 		image = new ImageIcon("res\\meteor.png").getImage();
@@ -27,7 +26,7 @@ public class Meteor extends GameObject {
 		height = 50;
 		
 		speed = 5;		
-		speed += player.getScore()/100;
+		speed += player.getScore()/200;
 		if(speed>=maxSpeed)
 		{
 			speed = maxSpeed;
@@ -50,7 +49,7 @@ public class Meteor extends GameObject {
 		
 		damage = 15;
 		health = 100;
-		spawnTime = 0.5;
+		spawnTime = 0.4;
 		x = random.nextInt(GamePanel.Width/width)*width;
 		
 		y=-height;
@@ -117,9 +116,9 @@ public class Meteor extends GameObject {
 	public int getExperienceValue() {
 		return experienceValue;
 	}
-	public ArrayList<Meteor> getMeteors() {
-		return meteors;
-	}	
+//	public ArrayList<Meteor> getMeteors() {
+//		return meteors;
+//	}	
 	public int getDamage() {
 		return damage;
 	}

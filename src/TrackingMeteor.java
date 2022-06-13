@@ -7,7 +7,7 @@ public class TrackingMeteor extends Meteor{
 	{
 		image = new ImageIcon("res\\trackingMeteor.png").getImage();
 		
-		speed = (int)(super.speed*1.5);
+		speed = (int)(super.speed*1.3);
 		setHealth((int)super.getHealth()/2);
 	}
 	

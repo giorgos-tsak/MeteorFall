@@ -22,6 +22,8 @@ public class Player extends GameObject {
 	private int damage;
 	private double attackSpeed;
 	private int baseHealth = 100;
+	private int baseDamage=25;
+	private double baseAttackSpeed=0.3;
 	private int score;
 	private int upgradePoints;
 	private int maxLvL;
@@ -59,7 +61,7 @@ public class Player extends GameObject {
 		healthBar.setBackground(Color.black);
 		healthBar.setStringPainted(true);
 		healthBar.setString(Integer.toString(health));
-		experienceBar.setMaximum(levelPoints*1);
+		experienceBar.setMaximum(levelPoints*100);
 		experienceBar.setForeground(new Color(0,188,255));
 		experienceBar.setBackground(Color.black);
 		experienceBar.setString(Integer.toString(levelPoints));
@@ -141,7 +143,7 @@ public class Player extends GameObject {
 	}
 	
 	public void lvlUp() {
-		if(experiencePoints>=levelPoints*1 && levelPoints<maxLvL)
+		if(experiencePoints>=levelPoints*100 && levelPoints<maxLvL)
 		{
 			levelPoints++;
 			upgradePoints++;
@@ -149,7 +151,7 @@ public class Player extends GameObject {
 			{
 				experiencePoints=0;				
 			}
-			experienceBar.setMaximum(levelPoints*1);
+			experienceBar.setMaximum(levelPoints*100);
 		}
 		
 	}
@@ -198,6 +200,7 @@ public class Player extends GameObject {
 		{
 			if(up && y>0)
 			{
+				
 				y-=speed;
 			}
 			if(down && y+height<GamePanel.Height)
@@ -338,6 +341,16 @@ public class Player extends GameObject {
 	public void setUpgradePoints(int upgradePoints) {
 		this.upgradePoints = upgradePoints;
 	}
+	public double getBaseAttackSpeed() {
+		return baseAttackSpeed;
+	}
+	public int getBaseDamage() {
+		return baseDamage;
+	}
+	public void setMaxLvL(int maxLvL) {
+		this.maxLvL = maxLvL;
+	}
+	
 	
 	class MyKeyListener implements KeyListener{
 
