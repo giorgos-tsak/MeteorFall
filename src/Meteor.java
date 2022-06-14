@@ -5,7 +5,7 @@ import javax.swing.ImageIcon;
 
 public class Meteor extends GameObject {
 	
-	private static ArrayList<Meteor> meteors = new ArrayList<>();
+	
 	private static Player player = new Player();
 	private int damage;
 	private int health;

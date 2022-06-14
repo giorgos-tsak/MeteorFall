@@ -25,7 +25,7 @@ public class GamePanel extends JPanel implements ActionListener{
 	private JButton pauseButton = new JButton("Pause");
 	private JButton restartButton = new JButton("Restart");
 	private OptionsPanel optionsPanel;
-	private Image backgroundImage =new ImageIcon("res\\background.png").getImage();
+	private AnimatedBackground animatedBackground = new AnimatedBackground();
 	GamePanel(Player player)
 	{
 		this.player = player;
@@ -85,6 +85,7 @@ public class GamePanel extends JPanel implements ActionListener{
 			player.setExperiencePoints(0);
 			player.setLevelPoints(1);
 			player.setUpgradePoints(1);
+			player.setBullets(new ArrayList<>());
 			meteors = new ArrayList<>();
 			powerups = new ArrayList<>();
 			StatsPanel.health=0;
@@ -101,7 +102,10 @@ public class GamePanel extends JPanel implements ActionListener{
 	public void paintComponent(Graphics g) {
 		
 		super.paintComponent(g);
-		g.drawImage(backgroundImage, 0, 0, GamePanel.Width, GamePanel.Height, null);
+		
+		for (AnimatedBackground animatedBackground : animatedBackground.getBackgrounds()) {
+			animatedBackground.paint(g);
+		}
 		player.paint(g);
 		for (ArrayList<Bullet> arrayList: player.getBullets()) {
 			for (Bullet bullet : arrayList) {
@@ -128,7 +132,7 @@ public class GamePanel extends JPanel implements ActionListener{
 			while(!pause && player.isAlive())
 			{
 				
-				
+				animatedBackground.update();
 				scoreJLabel.setText(""+player.getScore());
 				bestScoreLabel.setText(""+player.getAccount().getBestScore());
 				

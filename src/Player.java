@@ -164,7 +164,7 @@ public class Player extends GameObject {
 		shoot=false;
 	}
 	
-	private Bullet bullet = new Bullet(this);
+//	private Bullet bullet = new Bullet(this);
 	private ArrayList<Bullet> tempBullets = new ArrayList<>();
 	public void shoot() {
 		
@@ -250,9 +250,6 @@ public class Player extends GameObject {
 	public ArrayList<ArrayList<Bullet>> getBullets() {
 		return bullets;
 	}
-	public Bullet getBullet() {
-		return bullet;
-	}
 	public void setFreezeTime(long freezeTime) {
 		this.freezeTime = freezeTime;
 	}
@@ -328,6 +325,9 @@ public class Player extends GameObject {
 	}
 	public JProgressBar getExperienceBar() {
 		return experienceBar;
+	}
+	public void setBullets(ArrayList<ArrayList<Bullet>> bullets) {
+		this.bullets = bullets;
 	}
 	public int getExperiencePoints() {
 		return experiencePoints;
