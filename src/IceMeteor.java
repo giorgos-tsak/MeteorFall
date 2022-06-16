@@ -7,6 +7,7 @@ public class IceMeteor extends Meteor{
 	IceMeteor()
 	{
 		image = new ImageIcon("res\\iceMeteor.png").getImage();
+		setExperienceValue(getExperienceValue()*3);
 	}
 	
 	@Override

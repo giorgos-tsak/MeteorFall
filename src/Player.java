@@ -185,7 +185,7 @@ public class Player extends GameObject {
 			
 		}
 		
-		if(this.isShooting())
+		if(this.isShooting() && !frozen)
 		{
 			tempBullets = Bullet.generateBullets(this);	
 			if(tempBullets!=null)
@@ -254,10 +254,6 @@ public class Player extends GameObject {
 		if(elapsedTime>PiercePowerup.pierceDuration)
 		{
 			penetration=false;
-		}
-		if(penetration==true)
-		{
-			System.out.println(elapsedTime);
 		}
 		return penetration;
 	}
@@ -372,6 +368,7 @@ public class Player extends GameObject {
 	public void setMaxHealth(int maxHealth) {
 		this.maxHealth = maxHealth;
 	}
+	
 	
 	class MyKeyListener implements KeyListener{
 

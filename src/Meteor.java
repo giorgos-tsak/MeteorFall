@@ -115,4 +115,7 @@ public class Meteor extends GameObject {
 	public int getScoreValue() {
 		return scoreValue;
 	}
+	public void setExperienceValue(int experienceValue) {
+		this.experienceValue = experienceValue;
+	}
 }
