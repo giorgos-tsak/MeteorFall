@@ -15,12 +15,12 @@ public class HealPowerup extends Powerup{
 	public void applyEffect(Player player) {
 		if(this.collides(player))
 		{
-			if(player.getHealth()<100)
+			if(player.getHealth()<player.getMaxHealth())
 			{
 				player.setHealth(player.getHealth()+healValue);
-				if(player.getHealth()>100)
+				if(player.getHealth()>player.getMaxHealth())
 				{
-					player.setHealth(100);
+					player.setHealth(player.getMaxHealth());
 				}	
 			}	
 		}

@@ -1,59 +1,48 @@
-import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.ImageIcon;
 
 
 public class Meteor extends GameObject {
 	
-	
 	private static Player player = new Player();
 	private int damage;
 	private int health;
 	private int experienceValue;
-	private int scoreValue;
+	protected int scoreValue;
 	private static double spawnTime;
 	private Random random = new Random();
 	private int maxSpeed=30;
 	private int maxExperienceValue=35;
 	private int maxScoreValue=100;
 	
-	
 	Meteor()
 	{
 		image = new ImageIcon("res\\meteor.png").getImage();
-		
 		width = 50;
 		height = 50;
-		
 		speed = 5;		
 		speed += player.getScore()/200;
 		if(speed>=maxSpeed)
 		{
 			speed = maxSpeed;
 		}
-		
 		experienceValue=10;
 		experienceValue+= player.getScore()/50;
-		
 		if(experienceValue>=maxExperienceValue)
 		{
 			experienceValue = maxExperienceValue;
 		}
-		
 		scoreValue = 5;
 		scoreValue += player.getScore()/100;
 		if(scoreValue>=maxScoreValue)
 		{
 			scoreValue=maxScoreValue;
 		}
-		
 		damage = 15;
 		health = 100;
 		spawnTime = 0.4;
 		x = random.nextInt(GamePanel.Width/width)*width;
-		
 		y=-height;
-		
 	}
 	
 	public void update() {	
@@ -61,7 +50,6 @@ public class Meteor extends GameObject {
 		this.move();
 		this.applyEffect(player);
 	}
-	
 	
 	public void applyEffect(Player player) {}
 	
@@ -74,11 +62,11 @@ public class Meteor extends GameObject {
 		if(elapsedTime>spawnTime)
 		{
 			Meteor meteor;
-			if(x>=70 && x<100)
+			if(x>=80 && x<=100)
 			{
 				meteor = new TrackingMeteor();	
 			}
-			else if(x>=30 && x<=100) {
+			else if(x>=30 && x<80) {
 				meteor = new IceMeteor();
 			}
 			else {
@@ -90,7 +78,6 @@ public class Meteor extends GameObject {
 		return null;
 		
 	}
-	
 
 	public boolean collides(Player player) {
 
@@ -104,21 +91,15 @@ public class Meteor extends GameObject {
 		return false;
 	}
 	
-	
-	
 	@Override
 	public void move() {
 			y+=speed;
 	}
 	
-	
-	
+
 	public int getExperienceValue() {
 		return experienceValue;
 	}
-//	public ArrayList<Meteor> getMeteors() {
-//		return meteors;
-//	}	
 	public int getDamage() {
 		return damage;
 	}

@@ -19,10 +19,11 @@ public class Player extends GameObject {
 	private int levelPoints;
 	private int experiencePoints;
 	private int health;
-	private int damage;
-	private double attackSpeed;
 	private int baseHealth = 100;
+	private int maxHealth = 100;
+	private int damage;
 	private int baseDamage=25;
+	private double attackSpeed;
 	private double baseAttackSpeed=0.3;
 	private int score;
 	private int upgradePoints;
@@ -51,7 +52,7 @@ public class Player extends GameObject {
 		width=100;
 		height=100;
 		levelPoints=1;
-		speed=10.5;
+		speed=10;
 		immunityDuration=1;
 		maxLvL = 30;
 		experiencePoints = 0;
@@ -64,7 +65,7 @@ public class Player extends GameObject {
 		experienceBar.setMaximum(levelPoints*100);
 		experienceBar.setForeground(new Color(0,188,255));
 		experienceBar.setBackground(Color.black);
-		experienceBar.setString(Integer.toString(levelPoints));
+		experienceBar.setString(Integer.toString(experiencePoints)+"/"+Integer.toString(levelPoints*100));
 		experienceBar.setStringPainted(true);
 		
 		
@@ -110,6 +111,7 @@ public class Player extends GameObject {
 		shoot();
 		increaseScore();
 		isFrozen();
+		Penetration();
 		lvlUp();
 		if(health<0)
 		{
@@ -127,9 +129,8 @@ public class Player extends GameObject {
 		healthBar.setString(Integer.toString(health));
 		healthBar.setBounds(this.getCenter()-50,this.y-20,100,15);
 		
-		experienceBar.setString(Integer.toString(levelPoints));
+		experienceBar.setString(Integer.toString(experiencePoints)+" / "+Integer.toString(levelPoints*100));
 		experienceBar.setValue(experiencePoints);
-		
 		experienceBar.setBounds(this.getCenter()-50,this.y-5,100,10);
 		for (Meteor meteor : meteors) {
 			if(meteor.getHealth()<=0)
@@ -145,12 +146,14 @@ public class Player extends GameObject {
 	public void lvlUp() {
 		if(experiencePoints>=levelPoints*100 && levelPoints<maxLvL)
 		{
-			levelPoints++;
-			upgradePoints++;
+			
 			if(levelPoints!=30)
 			{
-				experiencePoints=0;				
+				experiencePoints=experiencePoints-levelPoints*100;				
 			}
+			levelPoints++;
+			upgradePoints++;
+			this.speed+=0.5;
 			experienceBar.setMaximum(levelPoints*100);
 		}
 		
@@ -164,7 +167,6 @@ public class Player extends GameObject {
 		shoot=false;
 	}
 	
-//	private Bullet bullet = new Bullet(this);
 	private ArrayList<Bullet> tempBullets = new ArrayList<>();
 	public void shoot() {
 		
@@ -234,7 +236,6 @@ public class Player extends GameObject {
 	
 	
 	private long freezeTime = 0;
-	
 	public boolean isFrozen() {
 		
 		long currenTime = System.currentTimeMillis();	
@@ -246,7 +247,24 @@ public class Player extends GameObject {
 		return frozen;
 	}
 	
+	private long penetrationTime = 0;
+	public boolean Penetration() {
+		long currentTime = System.currentTimeMillis();
+		double elapsedTime = (currentTime-penetrationTime)/1000.0;
+		if(elapsedTime>PiercePowerup.pierceDuration)
+		{
+			penetration=false;
+		}
+		if(penetration==true)
+		{
+			System.out.println(elapsedTime);
+		}
+		return penetration;
+	}
 
+	public void setPenetrationTime(long penetrationTime) {
+		this.penetrationTime = penetrationTime;
+	}
 	public ArrayList<ArrayList<Bullet>> getBullets() {
 		return bullets;
 	}
@@ -290,9 +308,7 @@ public class Player extends GameObject {
 	public void setPenetration(boolean penetration) {
 		this.penetration = penetration;
 	}
-	public boolean Penetration() {
-		return penetration;
-	}
+	
 	public void setLevelPoints(int levelPoints) {
 		this.levelPoints = levelPoints;
 	}
@@ -350,7 +366,12 @@ public class Player extends GameObject {
 	public void setMaxLvL(int maxLvL) {
 		this.maxLvL = maxLvL;
 	}
-	
+	public int getMaxHealth() {
+		return maxHealth;
+	}
+	public void setMaxHealth(int maxHealth) {
+		this.maxHealth = maxHealth;
+	}
 	
 	class MyKeyListener implements KeyListener{
 

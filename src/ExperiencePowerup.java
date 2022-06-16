@@ -6,7 +6,7 @@ public class ExperiencePowerup extends Powerup{
 	
 	ExperiencePowerup()
 	{
-		experienceValue = 50;
+		experienceValue = 100;
 		image = new ImageIcon("res\\experience.png").getImage();
 	}
 	

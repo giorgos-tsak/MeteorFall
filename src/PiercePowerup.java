@@ -2,7 +2,7 @@ import javax.swing.ImageIcon;
 
 public class PiercePowerup extends Powerup{
 
-	private double pierceDuration = 3;
+	static double pierceDuration = 5;
 	
 	PiercePowerup()
 	{
@@ -13,17 +13,23 @@ public class PiercePowerup extends Powerup{
 	private static long pierceTime=System.currentTimeMillis();
 	@Override
 	public void applyEffect(Player player) {
-		long currentTime = System.currentTimeMillis();
+		
+//		long currentTime = System.currentTimeMillis();
+//		if(this.collides(player))
+//		{
+//			pierceTime = System.currentTimeMillis();
+//			player.setPenetration(true);
+//		}
+//		double elapsedTime = (currentTime-pierceTime)/1000.0;
+//		System.out.println(elapsedTime);
+//		if(elapsedTime>=pierceDuration)
+//		{
+//			player.setPenetration(false);
+//		}
 		if(this.collides(player))
 		{
-			pierceTime = System.currentTimeMillis();
 			player.setPenetration(true);
-		}
-		double elapsedTime = (currentTime-pierceTime)/1000.0;
-		
-		if(elapsedTime>=pierceDuration)
-		{
-			player.setPenetration(false);
+			player.setPenetrationTime(System.currentTimeMillis());
 		}
 
 	}

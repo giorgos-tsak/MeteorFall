@@ -124,8 +124,8 @@ public class GamePanel extends JPanel implements ActionListener{
 	
 	
 	
-	private Meteor tempMeteor;
-	private Powerup tempPowerup;
+	private Meteor tempMeteor = new Meteor();
+	private Powerup tempPowerup=new Powerup();
 	class GameThread extends Thread
 	{
 		public void run() {

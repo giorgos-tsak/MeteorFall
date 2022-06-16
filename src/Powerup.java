@@ -14,7 +14,7 @@ public class Powerup extends GameObject{
 		speed = 5;
 		x = random.nextInt(GamePanel.Width/width)*width;
 		y=-height;
-		spawnTime = 0.5;
+		spawnTime = 3;
 	}
 
 	
@@ -31,20 +31,20 @@ public class Powerup extends GameObject{
 		double elapsedTime = (currentTime-powerupTime)/1000.0;
 		if(elapsedTime>=spawnTime)
 		{
-
+			
 			powerupTime = System.currentTimeMillis();
 			Random randomPowerup = new  Random();
 			int x = randomPowerup.nextInt(100);
 			Powerup powerup = null;
-			if(x>=0 && x<=100)
+			if(x>=50 && x<=100)
 			{
 				powerup = new ExperiencePowerup();
 			}
-			if(x>=110 && x<=100)
+			if(x>=30 && x<50)
 			{
 				powerup = new PiercePowerup();
 			}
-			if(x>=1110 && x<30)
+			if(x>=0 && x<30)
 			{
 				powerup = new HealPowerup();
 			}
@@ -60,7 +60,7 @@ public class Powerup extends GameObject{
 	{}
 	
 
-
+	
 
 
 	@Override

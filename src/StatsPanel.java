@@ -110,7 +110,8 @@ public class StatsPanel extends JPanel implements ActionListener{
 	
 	public void increaseHealth() {
 			health++;
-			player.getHealthBar().setMaximum(player.getBaseHealth()+health*10);
+			player.setMaxHealth(player.getMaxHealth()+10);
+			player.getHealthBar().setMaximum(player.getMaxHealth());
 		if(health==10)
 		{
 			healthLabel.setText("Health: MAX");
