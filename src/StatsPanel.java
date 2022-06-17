@@ -92,10 +92,7 @@ public class StatsPanel extends JPanel implements ActionListener{
 				player.setUpgradePoints(player.getUpgradePoints()-1);
 			}	
 		}
-		if(e.getSource().equals(damageButton))
-		{
-			System.out.println("true");
-		}
+		
 	}
 	
 	public void increaseDamage() {

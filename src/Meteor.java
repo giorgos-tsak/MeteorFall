@@ -21,7 +21,7 @@ public class Meteor extends GameObject {
 		width = 50;
 		height = 50;
 		speed = 5;		
-		speed += player.getScore()/200;
+		speed += player.getScore()/300;
 		if(speed>=maxSpeed)
 		{
 			speed = maxSpeed;

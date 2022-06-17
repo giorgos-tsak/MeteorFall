@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -22,18 +23,21 @@ public class GamePanel extends JPanel implements ActionListener{
 	private ArrayList<Powerup> powerups = new ArrayList<>();
 	private JLabel scoreJLabel = new JLabel();
 	private JLabel bestScoreLabel = new JLabel();	
-	private JButton pauseButton = new JButton("Pause");
-	private JButton restartButton = new JButton("Restart");
+	private ImageButton pauseButton = new ImageButton("res\\pause.png");
+	private ImageButton restartButton = new ImageButton("res\\restart.png");
 	private OptionsPanel optionsPanel;
 	private AnimatedBackground animatedBackground = new AnimatedBackground();
+	private JLabel gameoverLabel = new JLabel("Game Over");
+	
 	GamePanel(Player player)
 	{
+		
 		this.player = player;
 
-		pauseButton.setBounds(500,0,100,20);
+		pauseButton.setBounds(Width-50,0,50,50);
 		pauseButton.setFocusable(false);
 		
-		restartButton.setBounds(500,20,100,20);
+		restartButton.setBounds(Width-50,0,50,50);
 		restartButton.setFocusable(false);
 		restartButton.addActionListener(this);
 		restartButton.setVisible(false);
@@ -44,8 +48,14 @@ public class GamePanel extends JPanel implements ActionListener{
 		
 		bestScoreLabel.setForeground(Color.green);
 		bestScoreLabel.setFont(new Font(null,Font.BOLD,20));
-		bestScoreLabel.setBounds(0,50,150,20);
+		bestScoreLabel.setBounds(0,50,200,20);
 		 
+		gameoverLabel.setForeground(Color.green);
+		gameoverLabel.setFont(new Font(null,Font.BOLD,50));
+		gameoverLabel.setBounds(Width/2-110,Height/2-200,270,40);
+		gameoverLabel.setVisible(false);
+		
+		
 		this.setFocusable(true);
 		this.addKeyListener(player.getMyKeyListener());
 		this.setPreferredSize(new Dimension(Width,Height));
@@ -57,7 +67,7 @@ public class GamePanel extends JPanel implements ActionListener{
 		this.add(pauseButton);
 		this.add(restartButton);
 		this.add(bestScoreLabel);
-		
+		this.add(gameoverLabel);
 	}
 	boolean pause = false;
 	@Override
@@ -72,7 +82,9 @@ public class GamePanel extends JPanel implements ActionListener{
 		}
 		if(e.getSource().equals(restartButton))
 		{
+			gameoverLabel.setVisible(false);
 			restartButton.setVisible(false);
+			pauseButton.setVisible(true);
 			player.setHealth(player.getBaseHealth());
 			player.getHealthBar().setMaximum(player.getBaseHealth());
 			player.setDamage(player.getBaseDamage());
@@ -102,7 +114,6 @@ public class GamePanel extends JPanel implements ActionListener{
 	public void paintComponent(Graphics g) {
 		
 		super.paintComponent(g);
-		
 		for (AnimatedBackground animatedBackground : animatedBackground.getBackgrounds()) {
 			animatedBackground.paint(g);
 		}
@@ -118,7 +129,6 @@ public class GamePanel extends JPanel implements ActionListener{
 		for (Powerup powerup : powerups) {
 			powerup.paint(g);
 		}
-		
 	}
 		
 	
@@ -133,8 +143,8 @@ public class GamePanel extends JPanel implements ActionListener{
 			{
 				
 				animatedBackground.update();
-				scoreJLabel.setText(""+player.getScore());
-				bestScoreLabel.setText(""+player.getAccount().getBestScore());
+				scoreJLabel.setText("Score:"+player.getScore());
+				bestScoreLabel.setText("Best:"+player.getAccount().getBestScore());
 				
 				tempPowerup = Powerup.generatePowerup();
 				if(tempPowerup!=null)
@@ -181,6 +191,8 @@ public class GamePanel extends JPanel implements ActionListener{
 			if(!player.isAlive())
 			{
 				restartButton.setVisible(true);
+				pauseButton.setVisible(false);
+				gameoverLabel.setVisible(true);
 			}
 		}
 	}
