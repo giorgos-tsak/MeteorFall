@@ -44,8 +44,8 @@ public class Player extends GameObject {
 		
 		image = new ImageIcon("res\\spaceship.png").getImage();
 		
-		x=300;
-		y=300;
+		x=GamePanel.Width/2;
+		y=GamePanel.Height/2+GamePanel.Height/6;
 		health=baseHealth;
 		damage = 25;
 		attackSpeed=0.3;

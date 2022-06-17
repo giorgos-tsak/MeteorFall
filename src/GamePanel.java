@@ -89,8 +89,8 @@ public class GamePanel extends JPanel implements ActionListener{
 			player.getHealthBar().setMaximum(player.getBaseHealth());
 			player.setDamage(player.getBaseDamage());
 			player.setAttackSpeed(player.getBaseAttackSpeed());
-			player.setX(300);
-			player.setY(300);
+			player.setX(Width/2);
+			player.setY(500);
 			player.setFrozen(false);
 			player.setPenetration(false);
 			player.setScore(0);

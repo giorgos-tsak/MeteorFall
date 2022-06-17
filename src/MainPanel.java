@@ -143,6 +143,7 @@ public class MainPanel extends JPanel implements ActionListener{
 		{
 			optionsPanel.setVisible(false);
 			leaderBoardPanel.setVisible(true);
+			leaderBoardPanel.load();
 			this.setPreferredSize(leaderBoardPanel.getPreferredSize());
 			frame.pack();
 			frame.setLocationRelativeTo(null);
