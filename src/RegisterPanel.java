@@ -112,7 +112,7 @@ public class RegisterPanel extends JPanel{
 		HashMap<String, Account> accounts = new HashMap<>();
 		try {
 			
-			FileInputStream filein = new FileInputStream("res\\test.ser");
+			FileInputStream filein = new FileInputStream("res\\accounts.ser");
 			if(filein.available()!=0)
 			{
 				ObjectInputStream in = new ObjectInputStream(filein);
@@ -125,7 +125,6 @@ public class RegisterPanel extends JPanel{
 					if(username.equals(account.getUsername()))
 					{
 						
-						System.out.println("username already exists");
 						exist = true;
 						JOptionPane.showInternalMessageDialog(null, "username already exists");
 					}
@@ -139,12 +138,12 @@ public class RegisterPanel extends JPanel{
 					account.setUsername(username);
 					account.setPassword(password);
 					accounts.put(username,account);
-					FileOutputStream fileout = new FileOutputStream("res\\test.ser");
+					FileOutputStream fileout = new FileOutputStream("res\\accounts.ser");
 					ObjectOutputStream out = new ObjectOutputStream(fileout);
 					out.writeObject(accounts);
 					out.close();
 					fileout.close();
-					System.out.println("Saved");
+			
 				} catch (IOException e) {}
 				return true;
 			}

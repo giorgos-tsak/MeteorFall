@@ -104,7 +104,7 @@ public class LoginPanel extends JPanel {
 		username = usernameField.getText().trim();
 		password = new String (passwordField.getPassword());
 		try {
-			FileInputStream filein = new FileInputStream("res\\test.ser");
+			FileInputStream filein = new FileInputStream("res\\accounts.ser");
 			if(filein.available()!=0)
 			{
 				

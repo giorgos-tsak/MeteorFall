@@ -7,6 +7,7 @@ public class ExperiencePowerup extends Powerup{
 	ExperiencePowerup()
 	{
 		experienceValue = 100;
+		experienceValue+=player.getScore()/10;
 		image = new ImageIcon("res\\experience.png").getImage();
 	}
 	

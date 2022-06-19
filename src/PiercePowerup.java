@@ -10,7 +10,7 @@ public class PiercePowerup extends Powerup{
 	}
 	
 	
-	private static long pierceTime=System.currentTimeMillis();
+	
 	@Override
 	public void applyEffect(Player player) {
 		

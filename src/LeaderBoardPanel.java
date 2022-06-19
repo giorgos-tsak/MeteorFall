@@ -39,7 +39,7 @@ public class LeaderBoardPanel extends JPanel{
 	
 	public void load() {
 		try {
-			FileInputStream fileInputStream = new FileInputStream("res\\test.ser");
+			FileInputStream fileInputStream = new FileInputStream("res\\accounts.ser");
 			ObjectInputStream in = new ObjectInputStream(fileInputStream);
 			accounts = (HashMap<String, Account>)in.readObject();
 			in.close();

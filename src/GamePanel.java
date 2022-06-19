@@ -106,7 +106,7 @@ public class GamePanel extends JPanel implements ActionListener{
 			gameThread = new GameThread();
 			gameThread.start();
 		}
-		
+		 
 	
 	}
 	

@@ -8,7 +8,7 @@ public class AnimatedBackground extends GameObject{
 	private ArrayList<AnimatedBackground> backgrounds = new ArrayList<>();
 	AnimatedBackground()
 	{
-		speed = 5;
+		speed = 4;
 		width=GamePanel.Width;
 		height=GamePanel.Height;
 		image = new ImageIcon("res\\background.png").getImage();	
@@ -27,11 +27,11 @@ public class AnimatedBackground extends GameObject{
 		
 		for (Iterator iterator = backgrounds.iterator(); iterator.hasNext();) {
 			AnimatedBackground animatedBackground = (AnimatedBackground) iterator.next();
-			animatedBackground.move();
 			if(animatedBackground.y>=GamePanel.Height)
 			{
 				animatedBackground.y=-GamePanel.Height;
 			}
+			animatedBackground.move();
 			
 		}
 	}

@@ -2,7 +2,7 @@ import javax.swing.ImageIcon;
 
 public class HealPowerup extends Powerup{
 	
-	private int healValue = 10;
+	private int healValue = 25;
 	
 	
 	HealPowerup()

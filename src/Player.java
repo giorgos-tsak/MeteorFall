@@ -52,7 +52,7 @@ public class Player extends GameObject {
 		width=100;
 		height=100;
 		levelPoints=1;
-		speed=10;
+		speed=13;
 		immunityDuration=1;
 		maxLvL = 30;
 		experiencePoints = 0;
@@ -79,7 +79,7 @@ public class Player extends GameObject {
 		try {
 			
 			HashMap<String, Account> accounts = new HashMap<>();
-			FileInputStream filein = new FileInputStream("res\\test.ser");
+			FileInputStream filein = new FileInputStream("res\\accounts.ser");
 			if(filein.available()!=0)
 			{
 				
@@ -93,7 +93,7 @@ public class Player extends GameObject {
 				
 				try {
 					
-					FileOutputStream fileout = new FileOutputStream("res\\test.ser");
+					FileOutputStream fileout = new FileOutputStream("res\\accounts.ser");
 					ObjectOutputStream out = new ObjectOutputStream(fileout);
 					out.writeObject(accounts);
 					out.close();
@@ -153,7 +153,6 @@ public class Player extends GameObject {
 			}
 			levelPoints++;
 			upgradePoints++;
-			this.speed+=0.5;
 			experienceBar.setMaximum(levelPoints*100);
 		}
 		
@@ -200,22 +199,49 @@ public class Player extends GameObject {
 	public void move() {
 		if(!frozen)
 		{
-			if(up && y>0)
+			if(up && y>0 && !down)
 			{
-				
-				y-=speed;
+				if(y-speed<0)
+				{
+					y=0;
+				}
+				if(y>0)
+				{					
+					y-=speed;
+				}
 			}
-			if(down && y+height<GamePanel.Height)
+			if(down && y+height<GamePanel.Height && !up)
 			{
-				y+=speed;
+				if(y+height+speed>GamePanel.Height)
+				{
+					y=GamePanel.Height-height;
+				}
+				if(y+height<GamePanel.Height)
+				{					
+					y+=speed;
+				}
 			}
-			if(left && x>0)
-			{
-				x-=speed;
+			if(left  && !right)
+			{		
+				if(x-speed<0)
+				{
+					x=0;
+				}
+				if(x>0)
+				{					
+					x-=speed;
+				}
 			}
-			if(right && x+width<GamePanel.Width)
+			if(right && x+width<GamePanel.Width && !left)
 			{
-				x+=speed;
+				if(x+width+speed>GamePanel.Width)
+				{
+					x=GamePanel.Width-width;
+				}
+				if(x+width<GamePanel.Width)
+				{					
+					x+=speed;
+				}
 			}
 		}
 		

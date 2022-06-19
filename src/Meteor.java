@@ -7,21 +7,23 @@ public class Meteor extends GameObject {
 	private static Player player = new Player();
 	private int damage;
 	private int health;
+	private int maxHealth=700;
 	private int experienceValue;
 	protected int scoreValue;
 	private static double spawnTime;
 	private Random random = new Random();
-	private int maxSpeed=30;
+	private int maxSpeed=15;
 	private int maxExperienceValue=35;
 	private int maxScoreValue=100;
+	private double maxSpawnTime=0.2;
 	
 	Meteor()
 	{
 		image = new ImageIcon("res\\meteor.png").getImage();
 		width = 50;
 		height = 50;
-		speed = 5;		
-		speed += player.getScore()/300;
+		speed = 3;		
+		speed += player.getScore()/600;
 		if(speed>=maxSpeed)
 		{
 			speed = maxSpeed;
@@ -40,7 +42,17 @@ public class Meteor extends GameObject {
 		}
 		damage = 15;
 		health = 100;
-		spawnTime = 0.4;
+		health+=player.getScore()/100;
+		if(health>=maxHealth)
+		{
+			health=maxHealth;
+		}
+		spawnTime = 0.5;
+		spawnTime-=player.getScore()/10000;
+		if(spawnTime<=maxSpawnTime)
+		{
+			spawnTime=maxSpawnTime;
+		}
 		x = random.nextInt(GamePanel.Width/width)*width;
 		y=-height;
 	}

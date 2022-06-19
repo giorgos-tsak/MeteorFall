@@ -5,16 +5,21 @@ public class Powerup extends GameObject{
 	
 	private Random random = new Random();
 	private static double spawnTime;
-	private Player player;
-	
+	protected static Player player = new Player();
+	private int maxSpeed=10;
 	Powerup()
 	{
 		width = 50;
 		height = 50;
-		speed = 5;
+		speed = 3;
+		speed+=player.getScore()/300;
+		if(speed>=maxSpeed)
+		{
+			speed=maxSpeed;
+		}
 		x = random.nextInt(GamePanel.Width/width)*width;
 		y=-height;
-		spawnTime = 3;
+		spawnTime = 4;
 	}
 
 	
