@@ -1,8 +1,7 @@
 import java.util.ArrayList;
 import java.util.Iterator;
-
 import javax.swing.ImageIcon;
-
+//Κινούμενο background
 public class AnimatedBackground extends GameObject{
 
 	private ArrayList<AnimatedBackground> backgrounds = new ArrayList<>();

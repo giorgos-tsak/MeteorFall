@@ -1,9 +1,7 @@
 import java.awt.Graphics;
 import java.awt.Image;
-import java.io.Serializable;
-
-
-
+//Κλάση η οποία περιέχει τις διαστάσεις των αντικειμένων και των συντεταγμένων τους πανώ στην οθόνη καθώς και
+//μέθοδο move για την κίνηση των αντικειμένων
 
 public abstract class GameObject {
 	

@@ -1,5 +1,5 @@
 import java.util.Random;
-
+//Η κλάση αυτή είναι υπεύθυνη για την δημιουργία ενισχυτικών.
 public class Powerup extends GameObject{
 
 	
@@ -75,7 +75,7 @@ public class Powerup extends GameObject{
 	}
 	
 	public void setPlayer(Player player) {
-		this.player = player;
+		Powerup.player = player;
 	}
 	
 }

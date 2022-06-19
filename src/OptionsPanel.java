@@ -37,7 +37,7 @@ public class OptionsPanel extends JPanel {
 		
 		this.setLayout(null);
 		this.setPreferredSize(new Dimension(Width,Height));
-		this.setBackground(new Color(10, 10, 10, 200));
+		this.setBackground(Color.black);
 		this.add(playButton);
 		this.add(statsButton);
 		this.add(leaderBoardButton);

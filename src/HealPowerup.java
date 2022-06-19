@@ -1,5 +1,5 @@
 import javax.swing.ImageIcon;
-
+//Ενισχυτικό το οποίο θεραπεύει τον παίκτη
 public class HealPowerup extends Powerup{
 	
 	private int healValue = 25;

@@ -1,5 +1,5 @@
 import javax.swing.ImageIcon;
-
+//Μετεωρίτης που κατευθύνεται προς το παίκτη
 public class TrackingMeteor extends Meteor{
 
 	

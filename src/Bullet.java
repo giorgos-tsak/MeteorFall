@@ -1,11 +1,9 @@
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
-
+//Σφαίρες οι οποίες δημιουργούνται όταν ο παίκτης πατήσει space. Όταν ο παίκτης φτάσει επίπεδο 15 και 30 
+//αποκτά μία επιπλέον σφαίρα
 public class Bullet extends GameObject {
 	
-	private ArrayList<Meteor> meteors = new ArrayList<>();
-//	private static ArrayList<ArrayList<Bullet>> bullets = new ArrayList<>();
-//	private boolean pierce = false;
 	private int damage;
 	private ArrayList<Meteor> meteorsHit = new ArrayList<>();
 	
@@ -22,9 +20,7 @@ public class Bullet extends GameObject {
 		
 	}
 	
-	
-	
-	
+
 
 	public void update() {
 		
@@ -101,12 +97,6 @@ public class Bullet extends GameObject {
 		y-=speed;
 		
 	}
-
-	
-	public void setMeteors(ArrayList<Meteor> meteors) {
-		this.meteors = meteors;
-	}
-	
 
 
 	

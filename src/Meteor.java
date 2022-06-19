@@ -1,7 +1,6 @@
 import java.util.Random;
 import javax.swing.ImageIcon;
-
-
+//Η κλάση αυτη αναλαμβάνει την δημιουργία μετεωριτών. Οι μετεωρίτες γίνονται δυνατότεροι όσο αυξάνεται το σκορ 
 public class Meteor extends GameObject {
 	
 	private static Player player = new Player();

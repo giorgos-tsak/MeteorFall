@@ -1,5 +1,5 @@
 import javax.swing.ImageIcon;
-
+//Μετεωρίτης που παγώνει τον παίκτη και δεν τον αφήνει να κινηθεί ή να πυροβολήσει
 public class IceMeteor extends Meteor{
 
 	static double freezeDuration = 1;

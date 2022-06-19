@@ -26,12 +26,13 @@ public class LeaderBoardPanel extends JPanel{
 	{
 		leaderboardLabel.setBounds(Width/2-100,10,200,35);
 		leaderboardLabel.setFont(new Font(null,Font.BOLD,30));
+		leaderboardLabel.setForeground(Color.green);
 		backButton.setBounds(0,0,50,50);
 		
 		
 		this.setLayout(null);
 		this.setPreferredSize(new Dimension(Width,Height));
-		this.setBackground(Color.pink);
+		this.setBackground(Color.black);
 		this.add(leaderboardLabel);
 		this.add(backButton);
 		
@@ -66,8 +67,10 @@ public class LeaderBoardPanel extends JPanel{
 			JLabel scoreLabel = new JLabel(""+account.getBestScore());
 			usernameLabel.setBounds(Width/2-130,posy,200,30);
 			usernameLabel.setFont(new Font(null,Font.BOLD,25));
+			usernameLabel.setForeground(Color.green);
 			scoreLabel.setBounds(usernameLabel.getX()+180,posy,100,25);
 			scoreLabel.setFont(new Font(null,Font.BOLD,25));
+			scoreLabel.setForeground(Color.green);
 			posy+=50;
 			count++;
 			this.add(usernameLabel);

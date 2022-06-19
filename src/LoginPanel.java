@@ -28,15 +28,15 @@ public class LoginPanel extends JPanel {
 	private JLabel loginLabel = new JLabel("Login");
 	private JButton loginButton = new JButton("Login");
 	private JButton signupButton = new JButton("Signup");
-	private Image meteorBackground = new ImageIcon("res\\meteorBackground.png").getImage();
-	private Account account = new Account();
 	
+
+
+	private Account account = new Account();
+	private Image image = new ImageIcon("res\\meteorBackground.png").getImage();
 	
 	LoginPanel()	
 	{
-
-		
-		
+	
 		this.setPreferredSize(new Dimension(Width,Height));
 		this.setLayout(null);
 		this.add(usernameField);
@@ -53,9 +53,9 @@ public class LoginPanel extends JPanel {
 	public void paintComponent(Graphics g) {
 		
 		super.paintComponent(g);
-		g.drawImage(meteorBackground,0,0,null);
+		g.drawImage(image,0,0,null);
 		
-		
+
 		
 		loginLabel.setBounds(Width/2-85/2,50,85,40);
 		loginLabel.setFont(new Font(null,Font.BOLD,30));

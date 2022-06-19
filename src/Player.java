@@ -11,8 +11,10 @@ import java.util.HashMap;
 import java.util.Iterator;
 import javax.swing.ImageIcon;
 import javax.swing.JProgressBar;
-
-
+//Η κλάση αυτή περιέχει τα στατιστικά του παίκτη. Περιλαμβάνει μία εσωτερική κλάση MyKeyListener για την 
+//αλληλεπίδραση χρήστη με το πληκτρολόγιο. Ο χρήστης κινεί τον παίκτη του με τα κουμπιά a,w,s,d και πυροβολεί με
+// το space. Ο παίκτης ανεβαίνει επίπεδο όταν μαζεύει πόντους εμπειρίας δίνοντας του την δυνατότητα να αναβαθμίσει
+// τα στατιστικά του μέσω του StatsPanel.
 public class Player extends GameObject {
 
 	

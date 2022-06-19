@@ -1,5 +1,5 @@
 import javax.swing.ImageIcon;
-
+//Ενισχυτικό για διαπεραστικές σφαίρες
 public class PiercePowerup extends Powerup{
 
 	static double pierceDuration = 5;

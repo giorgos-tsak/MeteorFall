@@ -1,6 +1,5 @@
 import java.io.Serializable;
-import java.util.HashMap;
-
+//Περιέχει τα στοιχεία του χρήστη.
 public class Account implements Serializable,Comparable<Account>{
 
 	private String password;

@@ -10,7 +10,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.HashMap;
 import java.util.Map;
-
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -36,9 +35,10 @@ public class RegisterPanel extends JPanel{
 	private ImageButton backButton = new ImageButton("res\\backButton.png");
 	private Account account = new Account();
 	
+	
+	
 	RegisterPanel()
 	{
-		
 		
 		
 		this.setPreferredSize(new Dimension(Width,Height));
@@ -60,6 +60,7 @@ public class RegisterPanel extends JPanel{
 		super.paintComponent(g);
 		
 		g.drawImage(image,0,0,null);
+		
 		
 		registerLabel.setBounds(Width/2-55,50,110,40);
 		registerLabel.setFont(new Font(null,Font.BOLD,30));

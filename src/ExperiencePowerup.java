@@ -1,5 +1,5 @@
 import javax.swing.ImageIcon;
-
+//Ενισχυτικό το οποία αυξάνει την εμπειρία του παίκτη
 public class ExperiencePowerup extends Powerup{
 	
 	private int experienceValue;

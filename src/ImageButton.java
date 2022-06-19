@@ -1,18 +1,22 @@
 import java.awt.Graphics;
 import java.awt.Image;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-
+//Κλάση για την δημιουργία κουμπιών με εικόνες
 public class ImageButton extends JButton{
 
-	Image image;
+
+	private Image image;
+	
 	
 	ImageButton(String path)
 	{
 		image = new ImageIcon(path).getImage();
+
+		
 		setContentAreaFilled(false);
 		setFocusable(false);
+		
 		
 	}
 	
@@ -21,6 +25,7 @@ public class ImageButton extends JButton{
 		
 		
 		g.drawImage(image, 0, 0, getWidth(), getHeight(), null);
+		
 	}
 	
 	
