@@ -121,7 +121,7 @@ public class Meteor extends GameObject {
 		return health;
 	}
 	public void setPlayer(Player player) {
-		this.player = player;
+		Meteor.player = player;
 	}
 	public int getScoreValue() {
 		return scoreValue;

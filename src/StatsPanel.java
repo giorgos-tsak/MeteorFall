@@ -19,7 +19,6 @@ public class StatsPanel extends JPanel implements ActionListener{
 	private JLabel damageLabel = new JLabel("Damage: 0");
 	private JLabel attackSpeedLabel = new JLabel("Atc. Speed: 0");
 	private JLabel experiencePointsLabel = new JLabel("Experience points: 0");
-	private JLabel imageJLabel = new JLabel();
 	private Player player = new Player();
 	static int damage;
 	static int attackSpeed;
